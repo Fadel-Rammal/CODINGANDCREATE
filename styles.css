@@ -1,0 +1,168 @@
+
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+body{
+
+    background: linear-gradient(360deg, rgba(255, 246, 164, 0.855) 7.27%, rgba(255, 239, 90, 0.855) 100%);
+    mix-blend-mode: normal;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    flex-direction: column;
+}
+
+
+nav ul li{
+    list-style: none;
+
+}
+
+nav{
+
+background: rgba(255, 231, 16, 0.4);
+padding: 0.01rem;
+
+}
+
+nav .title{
+    font-size: 10px;
+    font-family: 'Kavivanar';
+    font-style: normal;
+    font-size: 30px;
+    
+    
+}
+
+
+.just, .organize{
+    text-align: center;
+    font-family: 'Inter';
+    font-style: normal;
+    font-size: 48px;
+    color: #000000;
+  
+}
+
+.content {
+    flex: 1;
+    padding: 20px;
+}
+
+footer {
+    display: flex;
+    background: rgba(255, 231, 16, 0.5);
+    flex-direction: row;
+    padding: 5px;
+    
+   
+}
+
+footer img {
+    display: flex;
+    align-items: center;
+    margin-left: 10px;
+}
+
+footer .text {
+    display: flex;
+    align-items: center;
+    font-family: 'Inter';
+    font-style: normal;
+    font-size: 16px;
+    
+}
+
+
+.tasks{
+
+    background: #ffef5b;
+    border-radius: 40px;
+    color: black;
+    font-size: 20px;
+    padding: 15px;
+    width: 40%;
+}
+
+.tasks:hover{
+
+    background: #fae94e;
+
+
+}
+
+.input{
+    position: relative;
+    display: flex;
+}
+
+.tasks::placeholder{
+    color: black;
+    opacity: 0.4;
+}
+
+.add-task-btn {
+    background-color: #5a5a5a; 
+    color: white; 
+    border-radius: 40px;
+    padding: 5px 10px;
+    
+}
+
+.add-task-btn:hover{
+
+    background-color: #464444; 
+
+
+}
+
+
+form{
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+
+}
+
+
+.data{
+
+    font-size: 20px;
+    justify-content: center;
+    display: flex;
+    margin-right: 200px;
+    margin-top: 20px;
+
+}
+
+#task-list li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px;
+    margin: 5px 0;
+}
+
+.task-text {
+    cursor: pointer;
+    flex-grow: 1;
+}
+
+.task-text.completed {
+    text-decoration: line-through;
+    color: #000000;
+}
+
+.cancel-button {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    margin-left: 10px;
+}
+
