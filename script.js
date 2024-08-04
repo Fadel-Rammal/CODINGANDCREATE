@@ -2,9 +2,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const form = document.getElementById('task-form');
     const taskInput = document.getElementById('task-input');
     const taskList = document.getElementById('task-list');
-    let draggingEle;
-    let placeholder;
-    let isDraggingStarted = false;
 
     function saveTasks() {
         const tasks = Array.from(taskList.children).map(li => ({
@@ -21,7 +18,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function addTaskToList(text, completed = false) {
         const listItem = document.createElement('li');
-        listItem.draggable = true;
 
         const editButton = document.createElement('img');
         editButton.src = 'edit.png';
@@ -62,62 +58,6 @@ document.addEventListener('DOMContentLoaded', () => {
         listItem.appendChild(taskSpan);
         listItem.appendChild(cancelButton);
         taskList.appendChild(listItem);
-
-
-        listItem.addEventListener('dragstart', handleDragStart);
-        listItem.addEventListener('dragover', handleDragOver);
-        listItem.addEventListener('drop', handleDrop);
-        listItem.addEventListener('dragend', handleDragEnd);
-    }
-
-    
-    function handleDragStart(e) {
-        draggingEle = this;
-        isDraggingStarted = false;
-
-      
-        placeholder = document.createElement('li');
-        placeholder.classList.add('placeholder');
-        placeholder.style.height = `${this.offsetHeight}px`;
-        e.dataTransfer.effectAllowed = 'move';
-        e.dataTransfer.setData('text/html', this.innerHTML);
-        this.classList.add('dragging');
-    }
-
-    function handleDragOver(e) {
-        if (e.preventDefault) {
-            e.preventDefault();
-        }
-        if (!isDraggingStarted) {
-            isDraggingStarted = true;
-            this.parentNode.insertBefore(placeholder, this.nextSibling);
-        }
-        return false;
-    }
-
-    function handleDrop(e) {
-        if (e.stopPropagation) {
-            e.stopPropagation();
-        }
-
-        if (draggingEle !== this) {
-          
-            draggingEle.innerHTML = this.innerHTML;
-            this.innerHTML = e.dataTransfer.getData('text/html');
-
-      
-            this.parentNode.insertBefore(draggingEle, this);
-        }
-
-        return false;
-    }
-
-    function handleDragEnd(e) {
-        this.classList.remove('dragging');
-        if (placeholder.parentNode) {
-            placeholder.parentNode.removeChild(placeholder);
-        }
-        saveTasks();
     }
 
     loadTasks();
@@ -134,6 +74,6 @@ document.addEventListener('DOMContentLoaded', () => {
         addTaskToList(taskText);
         saveTasks();
 
-        taskInput.value = '';
+        taskInput.value = '';  // Clear the text field
     });
 });
